@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 const getCategories = (req, res, next) => {
+=======
+  const getCategories = (req, res, next) => {
+>>>>>>> 282c997... 'update'
     //mock Category data
     const dataList = [
         {cate_id: "1", cate_title: "Digital Art", cate_img: "https://cdn.pixabay.com/photo/2017/03/01/10/53/art-2108118__340.jpg"},
