@@ -4,19 +4,20 @@ const router = express.Router();
 const {
     subscribeCategories,
     getCategories,
-    register,
+    registerResponse,
     editUser,
     logger,
     createPost,
     getTopics,
     letLogin,
-    user
+    user,
+    register,
 } = require('../controllers');
 
 
 router
     .route('/user')
-    .post(logger,register)
+    .post(logger,register, registerResponse)
     .put(logger,editUser);
 
 router
