@@ -10,6 +10,7 @@ const getUserProfile = require('./getUserProfile');
 const register = require('./register');
 const createPostResponse     = require('./createPostResponse');
 const saveUserProfileandBackgroundPicture = require('./saveUserProfileandBackgroundPicture');
+const getUserPost = require('./getUserPost');
 module.exports = {
     subscribeCategories,
     getCategories,
@@ -23,4 +24,5 @@ module.exports = {
     register,
     saveUserProfileandBackgroundPicture,
     createPostResponse,
+    getUserPost,
 };

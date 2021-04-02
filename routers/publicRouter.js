@@ -14,6 +14,7 @@ const {
     register,
     saveUserProfileandBackgroundPicture,
     createPostResponse,
+    getUserPost,
 } = require('../controllers');
 
 
@@ -37,6 +38,9 @@ router
 router
     .route('/post')
     .post(logger,createPost, createPostResponse); 
+router
+    .route('/post/:user_id')
+    .get(logger,getUserPost); 
 router
     .route('/Login')
     .post(logger, letLogin);
