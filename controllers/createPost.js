@@ -32,7 +32,7 @@ const storage = multer.diskStorage({
         filetype = x[x.length - 1];
         uuidPicture = uuid.v4();
         date = getFormattedDate();
-        picture = await createPicture(
+        req.body.picture = await createPicture(
             req.body.user_id,
             file.originalname,
             filetype,
@@ -43,7 +43,7 @@ const storage = multer.diskStorage({
             req.body.desciption,
             req.body.stocklimits
             );
-        req.body.result = await createCategoriesAssociatedPicture(picture.insertId, req.body.categories.split(','));
+        req.body.result = await createCategoriesAssociatedPicture(req.body.picture.insertId, req.body.categories.split(','));
         cb(null, uuidPicture + "." + filetype);
     },
 });

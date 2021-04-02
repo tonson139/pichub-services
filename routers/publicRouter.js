@@ -10,19 +10,20 @@ const {
     createPost,
     getTopics,
     letLogin,
-    user,
+    getUserProfile,
     register,
+    saveUserProfileandBackgroundPicture,
+    createPostResponse,
 } = require('../controllers');
 
 
 router
     .route('/user')
     .post(logger,register, registerResponse)
-    .put(logger,editUser);
-
+    .put(logger,saveUserProfileandBackgroundPicture, editUser);
 router
-    .route('/getUser/:id?')
-    .get(logger, user);
+    .route('/user/:user_id')
+    .get(logger, getUserProfile);
 
 router
     .route('/categories')
@@ -35,7 +36,7 @@ router
 
 router
     .route('/post')
-    .post(logger,createPost); 
+    .post(logger,createPost, createPostResponse); 
 router
     .route('/Login')
     .post(logger, letLogin);

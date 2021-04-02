@@ -10,7 +10,7 @@ app.use(express.json()); // for parsing application/json
 app.use(express.urlencoded({ extended: true }));
 
 app.use('/', router);
-app.use(express.static(path.join(__dirname,'public')));
+app.use(express.static(path.join(__dirname,'/storage')));
 
 app.listen(port, () => {
     console.log(`Running on http://localhost:${port}`)

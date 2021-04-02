@@ -6,8 +6,10 @@ const logger = require('./logger');
 const createPost = require('./createPost');
 const getTopics = require('./getTopics');
 const letLogin = require('./letLogin');
-const user = require('./userProfile');
+const getUserProfile = require('./getUserProfile');
 const register = require('./register');
+const createPostResponse     = require('./createPostResponse');
+const saveUserProfileandBackgroundPicture = require('./saveUserProfileandBackgroundPicture');
 module.exports = {
     subscribeCategories,
     getCategories,
@@ -17,6 +19,8 @@ module.exports = {
     createPost,
     getTopics,
     letLogin,
-    user,
+    getUserProfile,
     register,
+    saveUserProfileandBackgroundPicture,
+    createPostResponse,
 };
