@@ -3,7 +3,7 @@ const mysql = require("mysql");
 
 const createCategoriesAssociatedPicture = (
     picture_id,
-    categories
+    categories // array of cate_id [ '2', '3', '4' ]
 ) => {
     return new Promise((resolve, reject) => {
         let SQL = 'INSERT INTO tbl_categoriespicturesassociated (picture_id, category_id) VALUES ';
@@ -16,7 +16,6 @@ const createCategoriesAssociatedPicture = (
         dbMysql.query(SQL, (error, result, field) => {
             if (error) return reject(error);
             resolve(result);
-            console.log('createCategoriesAssociatedPicture');
         });
     });
 };

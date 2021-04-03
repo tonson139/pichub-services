@@ -11,6 +11,8 @@ const register = require('./register');
 const createPostResponse     = require('./createPostResponse');
 const saveUserProfileandBackgroundPicture = require('./saveUserProfileandBackgroundPicture');
 const getUserPost = require('./getUserPost');
+const editPicture = require('./editPicture');
+const editPictureInStorage = require('./editPictureInStorage');
 module.exports = {
     subscribeCategories,
     getCategories,
@@ -25,4 +27,6 @@ module.exports = {
     saveUserProfileandBackgroundPicture,
     createPostResponse,
     getUserPost,
+    editPicture,
+    editPictureInStorage,
 };
