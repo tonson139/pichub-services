@@ -1,10 +1,5 @@
-<<<<<<< HEAD
-=======
-  
->>>>>>> 282c997... 'update'
 const dbMysql = require('../dbconnection');
 const mysql = require("mysql");
-
 
 const createCategories = () => {
     const dataList = [

@@ -44,5 +44,5 @@ router
 router
     .route('/Login')
     .post(logger, letLogin);
-// router.route('/admin/categories').post(require('../models/createCategories')) // create mock in DB DO NOT CALL THIS API
+// router.route('/admin/categories').post(require('../models/MockcreateCategories')) // create mock in DB DO NOT CALL THIS API
 module.exports = router;
