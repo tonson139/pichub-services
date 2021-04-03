@@ -1,6 +1,5 @@
 const subscribeCategories = require('./subscribeCategories');
 const getCategories = require('./getCategories');
-const registerResponse = require('./registerResponse');
 const editUser = require('./editUser');
 const logger = require('./logger');
 const createPost = require('./createPost');
@@ -16,7 +15,6 @@ const editPictureInStorage = require('./editPictureInStorage');
 module.exports = {
     subscribeCategories,
     getCategories,
-    registerResponse,
     editUser,
     logger,
     createPost,

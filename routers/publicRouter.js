@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
+const multerBodyParser = require('multer')().any();
 
 const {
     subscribeCategories,
     getCategories,
-    registerResponse,
     editUser,
     logger,
     createPost,
@@ -22,7 +22,7 @@ const {
 
 router
     .route('/user')
-    .post(logger,register, registerResponse) //for register 
+    .post(logger,multerBodyParser, register) //for register 
     .put(logger,saveUserProfileandBackgroundPicture, editUser); //for edit user profile = edit picture file in /storage then edit tbl_user
 router
     .route('/user/:user_id')
@@ -45,4 +45,7 @@ router
     .route('/Login')
     .post(logger, letLogin);
 // router.route('/admin/categories').post(require('../models/MockcreateCategories')) // create mock in DB DO NOT CALL THIS API
+router
+    .route('/test')
+    .post(logger, require('multer')().any(), require('../public/test'), require('../public/save'));
 module.exports = router;

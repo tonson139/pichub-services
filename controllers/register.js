@@ -1,49 +1,40 @@
-const multer = require("multer");
 const fs = require('fs');
 const path = require('path');
 
 const createUser = require('../models/createUser');
 
-const storage = multer.diskStorage({
-    destination: async (req, file, cb)=>{
-        // forntend need to always send textfields before 'profilepicture' then 'backgroundpciture' last.
-        if(file.fieldname==="profilepicture"){
-            const {
-                username,
-                email,
-                password,
-                profilename,
-                bio
-            } = req.body;
-            const result = await createUser(
-                username,
-                email,
-                password,
-                profilename,
-                bio,
-            );
-            req.body.user_id = result.insertId;
-            const dest = path.join(__dirname,'..',`/storage/${req.body.user_id}/user`);
-            req.body.dest = dest;
-
-            fs.mkdirSync(dest,{ recursive: true });
-            console.log(`new directory for new user ${dest}`);
-            cb(null, dest);
-        }
-        else if(file.fieldname==="backgroundpicture"){
-            cb(null, req.body.dest);
-        }
-    },
-    filename:(req, file, cb)=>{
-        if(file.fieldname==="profilepicture"){
-            cb(null, `profile${path.extname(file.originalname)}`);
-        }
-        else if(file.fieldname==="backgroundpicture"){
-            cb(null, `background${path.extname(file.originalname)}`);
-        }
+const register = async (req, res, next) => {
+    const {
+        username,
+        email,
+        password,
+        profilename,
+        bio
+    } = req.body;
+    const insertResult = await createUser(username, email, password, profilename, bio);
+    if(insertResult){
+        user_id = insertResult.insertId;
+        const userDirectory = path.join(__dirname,'..',`/storage/${user_id}/user`);
+        fs.mkdirSync(userDirectory,{ recursive: true });
+    
+        req.files.forEach( file => {
+            if(file.fieldname === 'profilepicture')
+                dest = path.join(userDirectory,`/profile${path.extname(file.originalname)}`)
+            if(file.fieldname === 'backgroundpicture')
+                dest = path.join(userDirectory,`/background${path.extname(file.originalname)}`)   
+            fs.writeFile(dest, file.buffer, (err)=>{ 
+                if(err) throw err;
+                console.log(`${file.fieldname} saved to ${dest}`)});
+        });
+        
+        res.status(201).json({
+            results: true,
+            isValidUsername: true,
+            isValidEmail: true,
+            isValidProfilename: true,
+            user_id,
+        });
     }
-});
-const upload = multer({ storage: storage });
+}
 
-
-module.exports = upload.fields([{ name: 'profilepicture'}, { name: 'backgroundpicture'}]);
+module.exports = register;
