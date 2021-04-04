@@ -12,6 +12,7 @@ const saveUserProfileandBackgroundPicture = require('./saveUserProfileandBackgro
 const getUserPost = require('./getUserPost');
 const editPicture = require('./editPicture');
 const editPictureInStorage = require('./editPictureInStorage');
+const getTimeline = require('./getTimeline');
 module.exports = {
     subscribeCategories,
     getCategories,
@@ -27,4 +28,5 @@ module.exports = {
     getUserPost,
     editPicture,
     editPictureInStorage,
+    getTimeline,
 };

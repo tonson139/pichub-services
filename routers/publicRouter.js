@@ -17,6 +17,7 @@ const {
     getUserPost,
     editPicture,
     editPictureInStorage,
+    getTimeline,
 } = require('../controllers');
 
 
@@ -44,8 +45,11 @@ router
 router
     .route('/Login')
     .post(logger, letLogin);
-// router.route('/admin/categories').post(require('../models/MockcreateCategories')) // create mock in DB DO NOT CALL THIS API
 router
-    .route('/test')
-    .post(logger, require('multer')().any(), require('../public/test'), require('../public/save'));
+    .route('/gettimeline/:user_id')
+    .get(logger, getTimeline);
+// router.route('/admin/categories').post(require('../models/MockcreateCategories')) // create mock in DB DO NOT CALL THIS API
+// router
+//     .route('/test')
+//     .post(logger, require('multer')().any(), require('../public/test'), require('../public/save'));
 module.exports = router;
