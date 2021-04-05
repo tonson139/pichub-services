@@ -19,6 +19,7 @@ const {
     editPictureInStorage,
     getTimeline,
     getAgreementTerm,
+    _controllerTest,
 } = require('../controllers');
 
 

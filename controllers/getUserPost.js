@@ -1,7 +1,7 @@
-const readCategoriesPictureAssociatedByPictureIds = require('../models/readCategoriesPictureAssociatedByPictureIds');
-const readPictureByUserId = require('../models/readPictureByuserId');
-const readUser = require('../models/readUser');
-const getNetworkAddress = require('./getNetworkAddress');
+const { readCategoriesPictureAssociatedByPictureIds, 
+        readPictureByUserId,
+        readUser, } = require('../models');
+const { getNetworkAddress } = require('../helpers');
 
 const getUserPost = async (req, res, next)=> {
     const user_id = req.params.user_id;

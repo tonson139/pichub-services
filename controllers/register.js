@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const createUser = require('../models/createUser');
+const { createUser } = require('../models');
 
 const register = async (req, res, next) => {
     const {

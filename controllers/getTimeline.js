@@ -1,13 +1,13 @@
-const getPictureByCategoriesUserFollow = require('../models/getPicutresByCategoriesUserFollow');
-const readCategoriesPictureAssociatedByPictureIds = require('../models/readCategoriesPictureAssociatedByPictureIds');
-const getNetworkAddress = require('./getNetworkAddress');
-const getFilenameUserProfile = require('./getFilenameUserProfile');
+const { getPicutresByCategoriesUserFollow,
+        readCategoriesPictureAssociatedByPictureIds } = require('../models/');
+const { getNetworkAddress,
+        getFilenameUserProfile } = require('../helpers');
 
 const getTimeline = async (req, res, next) => { 
     const {user_id} = req.params;
 
     // get all picture in the categories user follow 
-    const picture = await getPictureByCategoriesUserFollow(user_id);
+    const picture = await getPicutresByCategoriesUserFollow(user_id);
     picture_ids = [];
     picture.forEach( e => {
         picture_ids.push(e.picture_id);

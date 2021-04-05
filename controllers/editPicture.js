@@ -1,6 +1,6 @@
-const createCategoriesAssociatedPicture = require('../models/createCategoriesAssociatedPicture');
-const deleteCategoriesPictureAssociated = require('../models/deleteCategoriesPicturesAssociated');
-const updatePicture = require('../models/updatePicture');
+const { createCategoriesAssociatedPicture } = require('../models');
+const { deleteCategoriesPicturesAssociated } = require('../models');
+const { updatePicture } = require('../models');
 
 const editPicture = async (req, res, next) => {
     const {
@@ -22,7 +22,7 @@ const editPicture = async (req, res, next) => {
     }
     else {
         const updateResult = await updatePicture(picture_id, originalfilename, filetype, picturetitle, price, description, stocklimits);
-        const deleteResult = await deleteCategoriesPictureAssociated(picture_id);
+        const deleteResult = await deleteCategoriesPicturesAssociated(picture_id);
         if(deleteResult){
             const insertResult = await createCategoriesAssociatedPicture(picture_id, categories.split(','));
             res.status(202).json({

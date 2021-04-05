@@ -1,7 +1,7 @@
 const dbMysql = require('../dbconnection');
 const mysql = require('mysql');
 
-const getCategoriesUserFollow = async (user_id) => {
+const getPicutresByCategoriesUserFollow = async (user_id) => {
     return new Promise( (resolve, reject) => {
         SQL = `SELECT DISTINCT *
         FROM
@@ -34,4 +34,4 @@ const getCategoriesUserFollow = async (user_id) => {
     });
 };
 
-module.exports =  getCategoriesUserFollow;
+module.exports =  getPicutresByCategoriesUserFollow;

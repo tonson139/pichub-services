@@ -14,6 +14,7 @@ const editPicture = require('./editPicture');
 const editPictureInStorage = require('./editPictureInStorage');
 const getTimeline = require('./getTimeline');
 const getAgreementTerm = require('./getAgreementTerm');
+const _controllerTest = require('./_contollersTest');
 module.exports = {
     subscribeCategories,
     getCategories,
@@ -31,4 +32,5 @@ module.exports = {
     editPictureInStorage,
     getTimeline,
     getAgreementTerm,
+    _controllerTest,
 };

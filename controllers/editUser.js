@@ -1,4 +1,4 @@
-const updateUser = require("../models/updateUser");
+const { updateUser } = require("../models");
 
 const editUser = async (req, res, next) => {
     user_id = req.body.user_id;

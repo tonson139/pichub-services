@@ -3,14 +3,9 @@ const fs = require('fs');
 const path = require('path');
 const uuid = require('uuid');
 
-const createPicture = require('../models/createPicture');
-const createCategoriesAssociatedPicture = require('../models/createCategoriesAssociatedPicture');
-
-function getFormattedDate() {
-    const date = new Date();
-    const str = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate() + " " +  date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
-    return str;
-}
+const { createPicture }= require('../models');
+const { createCategoriesAssociatedPicture } = require('../models');
+const { getFormattedDate } = require('../helpers');
 
 // save picture to storage dirtory 
 const storage = multer.diskStorage({
