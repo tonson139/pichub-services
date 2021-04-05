@@ -18,6 +18,7 @@ const {
     editPicture,
     editPictureInStorage,
     getTimeline,
+    getAgreementTerm,
 } = require('../controllers');
 
 
@@ -47,7 +48,10 @@ router
     .post(logger, letLogin);
 router
     .route('/gettimeline/:user_id')
-    .get(logger, getTimeline);
+    .get(logger, getTimeline); // get timeline screen for user
+router 
+    .route('/agreementterm')
+    .get(logger, getAgreementTerm);
 // router.route('/admin/categories').post(require('../models/MockcreateCategories')) // create mock in DB DO NOT CALL THIS API
 // router
 //     .route('/test')

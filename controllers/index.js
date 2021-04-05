@@ -13,6 +13,7 @@ const getUserPost = require('./getUserPost');
 const editPicture = require('./editPicture');
 const editPictureInStorage = require('./editPictureInStorage');
 const getTimeline = require('./getTimeline');
+const getAgreementTerm = require('./getAgreementTerm');
 module.exports = {
     subscribeCategories,
     getCategories,
@@ -29,4 +30,5 @@ module.exports = {
     editPicture,
     editPictureInStorage,
     getTimeline,
+    getAgreementTerm,
 };
