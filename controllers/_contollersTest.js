@@ -1,6 +1,7 @@
 const _controllerTest = (req, res, next) => {
-    console.log(req.body);
-    console.log(req.files);
+    console.log('_controllerTEst');
+    next();
+    console.log('passed conter');
 }
 
 module.exports = _controllerTest;
