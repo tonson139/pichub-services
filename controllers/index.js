@@ -8,10 +8,8 @@ const letLogin = require('./letLogin');
 const getUserProfile = require('./getUserProfile');
 const register = require('./register');
 const createPostResponse     = require('./createPostResponse');
-const saveUserProfileandBackgroundPicture = require('./saveUserProfileandBackgroundPicture');
 const getUserPost = require('./getUserPost');
 const editPicture = require('./editPicture');
-const editPictureInStorage = require('./editPictureInStorage');
 const getTimeline = require('./getTimeline');
 const getAgreementTerm = require('./getAgreementTerm');
 const _controllerTest = require('./_contollersTest');
@@ -25,11 +23,9 @@ module.exports = {
     letLogin,
     getUserProfile,
     register,
-    saveUserProfileandBackgroundPicture,
     createPostResponse,
     getUserPost,
     editPicture,
-    editPictureInStorage,
     getTimeline,
     getAgreementTerm,
     _controllerTest,

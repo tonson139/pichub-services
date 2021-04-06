@@ -12,11 +12,9 @@ const {
     letLogin,
     getUserProfile,
     register,
-    saveUserProfileandBackgroundPicture,
     createPostResponse,
     getUserPost,
     editPicture,
-    editPictureInStorage,
     getTimeline,
     getAgreementTerm,
     _controllerTest,
@@ -25,36 +23,34 @@ const {
 
 router
     .route('/user')
-    .post(logger,multerBodyParser, register) //for register 
-    .put(logger,saveUserProfileandBackgroundPicture, editUser); //for edit user profile = edit picture file in /storage then edit tbl_user
+    .post(multerBodyParser, register) //for register 
+    .put(multerBodyParser, editUser); //for edit user profile = edit picture file in /storage then edit tbl_user
 router
     .route('/user/:user_id')
-    .get(logger, getUserProfile); // get user profile to show frontend 
+    .get(getUserProfile); // get user profile to show frontend 
 router
     .route('/categories')
-    .post(logger, subscribeCategories) // user subscribe to categories in register process 
-    .get(logger, getCategories); //mock 
+    .post(subscribeCategories) // user subscribe to categories in register process 
+    .get(getCategories); //mock 
 router
     .route('/topics')
-    .get(logger, getTopics); //mock 
+    .get(getTopics); //mock 
 router
     .route('/post')
-    .post(logger,createPost, createPostResponse) // user create post 
-    .put(logger, editPictureInStorage, editPicture); // user edit post = edit picture file in /storage then edit tbl_pictures
+    .post(createPost, createPostResponse) // user create post 
+    .put(multerBodyParser, editPicture); // user edit post = edit picture file in /storage then edit tbl_pictures
 router
     .route('/post/:user_id')
-    .get(logger,getUserPost); // get all posts form user 
+    .get(getUserPost); // get all posts form user 
 router
     .route('/Login')
-    .post(logger, letLogin);
+    .post(letLogin);
 router
-    .route('/gettimeline/:user_id')
-    .get(logger, getTimeline); // get timeline screen for user
+    .route('/timeline/:user_id')
+    .get(getTimeline); // get timeline screen for user
 router 
-    .route('/agreementterm')
-    .get(logger, getAgreementTerm);
+    .route('/agreement')
+    .get(getAgreementTerm);
 // router.route('/admin/categories').post(require('../models/MockcreateCategories')) // create mock in DB DO NOT CALL THIS API
-// router
-//     .route('/test')
-//     .post(logger, require('multer')().any(), require('../public/test'), require('../public/save'));
+// router.route('/test').post(_controllerTest)
 module.exports = router;

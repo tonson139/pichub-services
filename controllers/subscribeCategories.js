@@ -1,10 +1,24 @@
+/**
+ * @description     - For user to subscribe to categories in register process
+ * @routes          - [POST] /categories  
+ */
+
 const { createCategoriesUserFollow } = require('../models');
 
 const subscribeCategories = async (req, res, next) => {
-    result = await createCategoriesUserFollow(req.body.user_id, req.body.subscribed_categories);
-    if(result)
-        res.status(201).json({"result": true});
-    next();
+    try{
+        console.info('INFO: subscribeCategories');
+
+        // insert categories that user subscribe to tbl_categoriesuserfollow 
+        insertResult = await createCategoriesUserFollow(req.body.user_id, req.body.subscribed_categories);
+        if(insertResult)
+            res.status(201).json({
+                result: true,
+                numberofCategoriesSubscribe: insertResult.affectedRows
+            });
+    } catch (error) {
+        next(error);
+    }
 };
 
 module.exports = subscribeCategories;

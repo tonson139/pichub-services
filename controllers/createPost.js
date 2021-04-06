@@ -1,3 +1,8 @@
+/**
+ * @description     - user create a "post" with "picture" and "picture detail". This function save "picture" to storage
+ * @routes          - [POST] /post
+ */
+
 const multer = require("multer");
 const fs = require('fs');
 const path = require('path');
@@ -15,7 +20,7 @@ const storage = multer.diskStorage({
         const dest = path.join(__dirname,'..',`/storage/${req.body.user_id}/img`);
         fs.access(dest, (err) => {
             if (err) {
-                console.log(`new directory ${dest}`);
+                console.info(`INFO: first post of a user, create new directory ${dest}`);
                 fs.mkdirSync(dest,{ recursive: true });
             } 
             cb(null, dest);
@@ -27,18 +32,22 @@ const storage = multer.diskStorage({
         filetype = x[x.length - 1];
         uuidPicture = uuid.v4();
         date = getFormattedDate();
-        req.body.picture = await createPicture(
-            req.body.user_id,
-            file.originalname,
-            filetype,
-            uuidPicture,
-            req.body.picturetitle,
-            date,
-            req.body.price,
-            req.body.desciption,
-            req.body.stocklimits
-            );
-        req.body.result = await createCategoriesAssociatedPicture(req.body.picture.insertId, req.body.categories.split(','));
+        try{
+            req.body.picture = await createPicture(
+                req.body.user_id,
+                file.originalname,
+                filetype,
+                uuidPicture,
+                req.body.picturetitle,
+                date,
+                req.body.price,
+                req.body.desciption,
+                req.body.stocklimits
+                );
+            req.body.result = await createCategoriesAssociatedPicture(req.body.picture.insertId, req.body.categories.split(','));
+        } catch (error) {
+            console.error(error);
+        }
         cb(null, uuidPicture + "." + filetype);
     },
 });

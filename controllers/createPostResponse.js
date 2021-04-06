@@ -1,3 +1,8 @@
+/**
+ * @description     - user create a "post" with "picture" and "picture detail". This function save "picture detail" to storage
+ * @routes          - [POST] /post
+ */
+
 const createPostResponse = (req, res, next) => {
     res.status(201).json({
         results: true,
