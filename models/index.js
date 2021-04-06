@@ -11,6 +11,7 @@ const readPictureByUserId = require('./readPictureByUserId');
 const readUser = require('./readUser');
 const updatePicture = require('./updatePicture');
 const updateUser = require('./updateUser');
+const readPicturesByCategoryIds = require('./readPicturesByCategoryIds');
 
 module.exports = {
     createCategoriesAssociatedPicture,
@@ -26,4 +27,5 @@ module.exports = {
     readUser,
     updatePicture,
     updateUser,
+    readPicturesByCategoryIds,
 }

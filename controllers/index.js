@@ -12,6 +12,7 @@ const getUserPost = require('./getUserPost');
 const editPicture = require('./editPicture');
 const getTimeline = require('./getTimeline');
 const getAgreementTerm = require('./getAgreementTerm');
+const getPictureByCategory = require('./getPictureByCategory');
 const _controllerTest = require('./_contollersTest');
 module.exports = {
     subscribeCategories,
@@ -28,5 +29,6 @@ module.exports = {
     editPicture,
     getTimeline,
     getAgreementTerm,
+    getPictureByCategory,
     _controllerTest,
 };

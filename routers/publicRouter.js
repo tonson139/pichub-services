@@ -17,6 +17,7 @@ const {
     editPicture,
     getTimeline,
     getAgreementTerm,
+    getPictureByCategory,
     _controllerTest,
 } = require('../controllers');
 
@@ -32,6 +33,9 @@ router
     .route('/categories')
     .post(subscribeCategories) // user subscribe to categories in register process 
     .get(getCategories); //mock 
+router
+    .route('/categories/:category_id?')
+    .get(getPictureByCategory);
 router
     .route('/topics')
     .get(getTopics); //mock 
