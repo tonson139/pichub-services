@@ -2,3 +2,5 @@ node_modules
 public
 storage
 test
+config.js
+.env
