@@ -4,3 +4,4 @@ storage
 test
 config.js
 .env
+mockSQL.sql

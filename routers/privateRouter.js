@@ -11,6 +11,7 @@ const {
     editPicture,
     getUserPost,
     getTimeline,
+    editUserText,
     _controllerTest,
 } = require('../controllers');
 
@@ -18,6 +19,9 @@ const {
 router
     .route('/user')
     .put(multerBodyParser, editUser); //for edit user profile = edit picture file in /storage then edit tbl_user
+router
+    .route('/user_account')
+    .post(editUserText); //for edit user profile = edit picture file in /storage then edit tbl_user
 router
     .route('/user/:user_id')
     .get(getUserProfile); // get user profile to show frontend 
