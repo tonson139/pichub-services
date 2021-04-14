@@ -28,15 +28,38 @@ const register = async (req, res, next) => {
             const userDirectory = path.join(__dirname,'..',`/storage/${user_id}/user`);
             fs.mkdirSync(userDirectory,{ recursive: true });
 
+            // set default profile and background picture src 
+            const defaultProfile = path.join(__dirname,'..','/public/defaultProfilePicture/profile_default.png');
+            const defaultBackgoround = path.join(__dirname,'..','/public/defaultProfilePicture/background_default.png');
+            // check if user not send profile or background 
+            const noProfile = 'profilepicture' in req.body;
+            const noBackground = 'backgroundpicture' in req.body;
+
             // save Profile Picture and Background Picture 
-            const resultSaveProBackPic = await saveFiles(req.files, ['profilepicture', 'backgroundpicture'],['profile', 'background'], userDirectory);
+            if(noProfile && noBackground){
+                fs.copyFileSync(defaultProfile,path.join(userDirectory,'profile.png'));
+                fs.copyFileSync(defaultBackgoround,path.join(userDirectory,'background.png'));
+            } 
+            else if(noProfile){
+                fs.copyFileSync(defaultProfile,path.join(userDirectory,'profile.png'));
+                resultSaveProBackPic = await saveFiles(req.files, ['backgroundpicture'],['background'], userDirectory);
+            }
+            else if(noBackground){
+                fs.copyFileSync(defaultBackgoround,path.join(userDirectory,'background.png'));
+                resultSaveProBackPic = await saveFiles(req.files, ['profilepicture'],['profile'], userDirectory);
+            }
+            else {
+                resultSaveProBackPic = await saveFiles(req.files, ['profilepicture', 'backgroundpicture'],['profile', 'background'], userDirectory);
+            }
 
             // response 
             res.status(201).json({
-                results: (resultSaveProBackPic.length === 2),
+                results: true,
                 isValidUsername: true,
                 isValidEmail: true,
                 isValidProfilename: true,
+                noProfile,
+                noBackground,
                 user_id,
             });
         }
