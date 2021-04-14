@@ -11,25 +11,52 @@ const { saveFiles } =require('../helpers');
 const editUser = async (req, res, next) => {
     try{
         console.info('INFO: editUser');
-        const { user_id, 
-                email, 
+        const { user_id,
+                username,
+                password,
+                email,
+                profilename,
                 bio 
         } = req.body;
 
-        const Updateresult = await updateUser(user_id, email, bio);
+        const Updateresult = await updateUser(user_id,username, password, email, profilename, bio);
 
         if (Updateresult) {
-            // delete user profile and background files in dir /storage/{user_id}/user
+            // get old filename of user pic 
             const userDirectory = path.join(__dirname,'..',`/storage/${user_id}/user`);
             const oldfilenames = await fs.readdir(userDirectory);
-            for(const filename of oldfilenames)
-                fs.unlink(path.join(userDirectory, filename));
-            const saveResult = await saveFiles(req.files, ['profilepicture', 'backgroundpicture'],['profile', 'background'], userDirectory);
+
+            // if user send text in fields (profilepicture or backgroundpicture) = not edit 
+            const isEditProfile = !('profilepicture' in req.body);
+            const isEditBackground = !('backgroundpicture' in req.body);
+            
+            // delete and save new profile pic
+            if(isEditProfile){
+                for(const filename of oldfilenames){
+                    if(filename.split('.')[0] === 'profile'){
+                        fs.unlink(path.join(userDirectory, filename));
+                        resultSaveProBackPic = await saveFiles(req.files, ['profilepicture'],['profile'], userDirectory);
+                    }
+                }
+            }
+
+            // delete and save new background pic
+            if(isEditBackground){
+                for(const filename of oldfilenames){
+                    if(filename.split('.')[0] === 'background'){
+                        fs.unlink(path.join(userDirectory, filename));
+                        resultSaveProBackPic = await saveFiles(req.files, ['backgroundpicture'],['background'], userDirectory);
+                    }
+                }
+            }
+            
             res.status(202).json({
-                results: (saveResult.length === 2),
+                results: true,
                 isValidUsername: true,
                 isValidEmail: true,
                 isValidProfilename: true,
+                isEditProfile,
+                isEditBackground,
                 user_id
             });
         } else {
