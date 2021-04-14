@@ -40,5 +40,5 @@ router
     .get(getTimeline); // get timeline screen for user
 
 // router.route('/admin/categories').post(require('../models/MockcreateCategories')) // create mock in DB DO NOT CALL THIS API
-// router.route('/test').post(_controllerTest)
+// router.route('/test').post(multerBodyParser, _controllerTest)
 module.exports = router;
