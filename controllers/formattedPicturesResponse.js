@@ -1,6 +1,6 @@
 /**
  * @description     - This function prepare a response for pictures
- * @param           - RowDataPacket [{ <picture_id>, <category_id>, <owner_id>, <picturetitle>, 
+ * @param           - RowDataPacket [{ <picture_id>, <owner_id>, <picturetitle>, 
  *                                      <profilename>, <filename>, <description>, <price>, <stocklimits> }]
  * @returns         - Array of object [ { img_id, img_title, img_ownerid, img_owner, img_src,
  *                               profile_pic, img_bio, img_cate, img_price, img_stock }]
@@ -18,9 +18,9 @@ const formatPictureResponse = async (picture) => {
             const picture_categories = {};
             categoires.forEach(e => {
                 if(!(e.picture_id in picture_categories)){
-                    picture_categories[e.picture_id] = [e.category_id.toString()];
+                    picture_categories[e.picture_id] = [e.categorytitle.toString()];
                 } else {
-                    picture_categories[e.picture_id].push(e.category_id.toString());
+                    picture_categories[e.picture_id].push(e.categorytitle.toString());
                 }
             });
     

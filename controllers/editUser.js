@@ -6,7 +6,7 @@
 const fs = require('fs/promises'); // const fs = require("fs").promises; node version 12.x
 const path = require('path');
 const { updateUser } = require("../models");
-const { saveFiles } =require('../helpers');
+const { saveFiles } = require('../helpers');
 
 const editUser = async (req, res, next) => {
     try{
