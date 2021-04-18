@@ -1,6 +1,8 @@
-# pichub-services
-Backend services for Pichub \
-Pichub is a Mobile application for buying and selling art picture \
+# pichub
+Pichub is a Mobile application for buying and selling art picture 
+## pichub-services
+Backend services for Pichub 
+## pichub-mobile
 For mobile github.com/bungearnss/pichub-mobile.git 
 
 This project is a part of ENE463 Software engineering, 
