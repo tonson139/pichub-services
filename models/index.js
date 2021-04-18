@@ -14,6 +14,7 @@ const updateUser = require('./updateUser');
 const readPicturesByCategoryIds = require('./readPicturesByCategoryIds');
 const validateLogin = require('./validateLogin');
 const updateUserText = require('./updateUserText');
+const getPicturesByTrending = require('./getPicturesByTrending');
 
 module.exports = {
     createCategoriesAssociatedPicture,
@@ -32,4 +33,5 @@ module.exports = {
     readPicturesByCategoryIds,
     validateLogin,
     updateUserText,
+    getPicturesByTrending,
 }
