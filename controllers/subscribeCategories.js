@@ -10,7 +10,7 @@ const subscribeCategories = async (req, res, next) => {
         console.info('INFO: subscribeCategories');
 
         // insert categories that user subscribe to tbl_categoriesuserfollow 
-        insertResult = await createCategoriesUserFollow(req.body.user_id, req.body.subscribed_categories);
+        insertResult = await createCategoriesUserFollow(req.body.user_id, req.body.subscribed_categories.split(',').slice(0,-1));
         if(insertResult)
             res.status(201).json({
                 result: true,
