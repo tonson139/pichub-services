@@ -1,9 +1,9 @@
 # pichub
 Pichub is a Mobile application for buying and selling art picture 
 ## pichub-services
-Backend services for Pichub 
+Backend services [github.com/tonson139/pichub-services](ttps://github.com/tonson139/pichub-services)
 ## pichub-mobile
-For mobile github.com/bungearnss/pichub-mobile.git 
+for mobile [github.com/bungearnss/pichub-mobile](https://github.com/bungearnss/pichub-mobile)
 
 This project is a part of ENE463 Software engineering, 
 King's Mongkut university of Technology Thonburi, 
