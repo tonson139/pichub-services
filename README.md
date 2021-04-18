@@ -8,10 +8,10 @@ King's Mongkut university of Technology Thonburi \
 Academic year 2020 \
 *Beta Version - 0.9.0*  \
 Team members: 
-  Backend 
-  - @tonson139
-  Frontend 
-  - @bungearnss 
-  - @IZZARA-URA 
-  - @featherflare 
+  - Backend 
+    - @tonson139
+  - Frontend 
+    - @bungearnss 
+    - @IZZARA-URA 
+    - @featherflare 
   
