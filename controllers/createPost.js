@@ -44,8 +44,6 @@ const storage = multer.diskStorage({
                 req.body.desciption,
                 req.body.stocklimits
                 );
-            console.log(req.body.picture.insertId, req.body.categories.split(',').slice(0,-1));
-            console.log(typeof req.body.categories);
             req.body.result = await createCategoriesAssociatedPicture(req.body.picture.insertId, req.body.categories.split(',').slice(0,-1));
             if(req.body.picture) { }
             if(req.body.result) { }

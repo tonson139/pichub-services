@@ -20,7 +20,8 @@ const login = async (req, res, next) => {
                 result: true,
                 username,
                 password,
-                token
+                token,
+                user_id
             });
         }
     } catch (error) {
