@@ -12,9 +12,9 @@ Academic year 2020
 *Beta Version - 0.9.0*  
 Team members: 
   - Backend 
-    - @[tonson139](https://github.com/tonson139)
+    - [tonson139](https://github.com/tonson139)
   - Frontend 
-    - @github.com/bungearnss 
-    - @github.com/IZZARA-URA 
-    - @github.com/featherflare 
+    - [bungearnss](https://github.com/bungearnss) 
+    - [IZZARA-URA](https://github.com/IZZARA-URA) 
+    - [featherflare](https://github.com/featherflare) 
   
